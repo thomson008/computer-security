@@ -18,12 +18,9 @@ for i in chars:
                     hashed = MD5.new(str.encode(password)).hexdigest()
                     mapping[hashed] = password
 
-with open('mappings.txt', 'w') as maps:
-    maps.write(str(mapping))
-
 
 for hash_code in f.readlines():
-    if hash_code in mapping.keys():
+    if hash_code[:-1] in mapping:
         password = mapping[hash_code[:-1]]
         counts.update({password : 1})
 
