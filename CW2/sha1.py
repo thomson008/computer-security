@@ -16,7 +16,7 @@ for line in samples.readlines():
     
     for password in passwords:
         concat = salt + password
-        if SHA1.new(concat.encode()).hexdigest() == hashed:
+        if SHA1.new(bytearray(concat, 'utf-8')).hexdigest() == hashed:
             counts.update({password : 1})
 
 print('Writing file...')
